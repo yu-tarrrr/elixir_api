@@ -8,11 +8,11 @@
 use Mix.Config
 
 # Configures the endpoint
-config :rest, RestWeb.Endpoint,
+config :todo_rest, TodoRest.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "n0pqZpW83rd4CBref6p4VStUgV7vGHTPt57lnvbSwyroMItHFY8M7NBob2BZit3V",
-  render_errors: [view: RestWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Rest.PubSub, adapter: Phoenix.PubSub.PG2],
+  render_errors: [view: TodoRest.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: TodoRest.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [signing_salt: "9DcG7PnL"]
 
 # Configures Elixir's Logger

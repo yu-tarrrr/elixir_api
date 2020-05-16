@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :rest, RestWeb.Endpoint,
+config :todo_rest, TodoRest.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -36,17 +36,6 @@ config :rest, RestWeb.Endpoint,
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
-
-# Watch static and templates for browser reloading.
-config :rest, RestWeb.Endpoint,
-  live_reload: [
-    patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/rest_web/(live|views)/.*(ex)$",
-      ~r"lib/rest_web/templates/.*(eex)$"
-    ]
-  ]
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

@@ -9,7 +9,7 @@ defmodule TodoRest.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      TodoRestWeb.Endpoint
+      TodoRest.Endpoint
       # Starts a worker by calling: TodoRest.Worker.start_link(arg)
       # {TodoRest.Worker, arg},
     ]
@@ -23,7 +23,7 @@ defmodule TodoRest.Application do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    TodoRestWeb.Endpoint.config_change(changed, removed)
+    TodoRest.Endpoint.config_change(changed, removed)
     :ok
   end
 end
