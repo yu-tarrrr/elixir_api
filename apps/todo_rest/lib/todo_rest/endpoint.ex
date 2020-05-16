@@ -6,7 +6,7 @@ defmodule TodoRest.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_top_rest_key",
+    key: "_todo_rest_key",
     signing_salt: "0rPgAs8/"
   ]
 
