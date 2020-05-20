@@ -1,18 +1,11 @@
-defmodule TodoUsecase do
-  @moduledoc """
-  Documentation for `TodoUsecase`.
-  """
+# defmodule TodoUsecase do
 
-  @doc """
-  Hello world.
+#   def hello do
+#     :world
+#   end
+# end
 
-  ## Examples
-
-      iex> TodoUsecase.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+defmodule MyApp.Calculator do
+  @callback add(integer(), integer()) :: integer()
+  @callback mult(integer(), integer()) :: integer()
 end

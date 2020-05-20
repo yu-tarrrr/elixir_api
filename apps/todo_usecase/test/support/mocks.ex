@@ -1,0 +1,1 @@
+Mox.defmock(MyApp.CalcMock, for: MyApp.Calculator)
