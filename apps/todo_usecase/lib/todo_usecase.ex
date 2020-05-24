@@ -1,5 +1,17 @@
-defmodule TodoUsecase do
-  def hello do
-    IO.puts("Hello, I'm usecase")
+defmodule TodoUsecase.FindUsecaseBehaviour do
+  @callback fetchTodos() ::
+    {:ok, %{} }| :not_found | {:error, reason :: term}
+  
+end
+
+defmodule TodoUsecase.FindUsecase do
+  @behaviour TodoUsecase.FindUsecaseBehaviour
+
+  @impl true
+  def fetchTodos do
+    case TodoPort.fetch() do
+      {:ok, result} -> result
+      _ -> nil
+    end
   end
 end

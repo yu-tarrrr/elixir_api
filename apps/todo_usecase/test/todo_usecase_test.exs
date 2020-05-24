@@ -1,10 +1,18 @@
-# defmodule TodoUsecaseTest do
-#   use ExUnit.Case
-#   import Mox
+defmodule TodoUsecaseTest do
+  use ExUnit.Case
+  import Mox
 
-#   # Make sure mocks are verified when the test exits
-#   setup :verify_on_exit!
+  setup :verify_on_exit!
 
+  test "find all usecase" do
+    result = %{id: 1, body: "todo1"}
+    TodoPortMock
+    |> expect(:fetch, fn -> result end)
+
+    assert TodoUsecase.FindUsecase.fetchTodos() == result
+  end
+
+end  
 #   test "invokes add and mult" do
 #     MyApp.CalcMock
 #     |> expect(:add, fn x, y -> x + y end)

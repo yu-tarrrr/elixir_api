@@ -1,18 +1,3 @@
 defmodule TodoPort do
-  @moduledoc """
-  Documentation for `TodoPort`.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> TodoPort.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+  @callback fetch() :: {:ok, %{} } | :not_found | {:error, reason :: term}
 end

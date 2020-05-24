@@ -3,9 +3,9 @@ defmodule TodoRest.TodoController do
   
 
   def readAll(conn, _params) do
-    TodoUsecase.hello()
+    result = TodoUsecase.FindUsecaseBehaviour.fetchTodos()
     conn
       |> put_status(200)
-      |> json(%{result: "selected"})
+      |> json(%{todos: result})
   end
 end
