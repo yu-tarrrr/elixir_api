@@ -5,20 +5,19 @@ defmodule TodoUsecaseTest do
   setup :verify_on_exit!
 
   test "find all usecase" do
-    result = %{id: 1, body: "todo1"}
-    TodoPort.FindPortMock
+    result = {:ok, %{id: 1, body: "todo1"}}
+    TodoGateway.FindGatewayMock
     |> expect(:fetch, fn -> result end)
 
-    assert TodoUsecase.FindUsecase.fetchTodos() == result
+    assert TodoGateway.FindGatewayMock.fetch() == result
+    assert TodoUsecase.FindUsecase.fetchTodos() == %{id: 1, body: "todo1"}
   end
 
-end  
-#   test "invokes add and mult" do
-#     MyApp.CalcMock
-#     |> expect(:add, fn x, y -> x + y end)
-#     |> expect(:mult, fn x, y -> x * y end)
+  test "no match case" do
+    TodoGateway.FindGatewayMock
+    |> expect(:fetch, fn -> :not_found end)
 
-#     assert MyApp.CalcMock.add(2, 3) == 5
-#     assert MyApp.CalcMock.mult(2, 3) == 6
-#   end
-# end
+    assert TodoGateway.FindGatewayMock.fetch() == :not_found
+    assert TodoUsecase.FindUsecase.fetchTodos() == nil
+  end
+end  

@@ -1,8 +1,11 @@
+defmodule TodoGateway.FindGatewayBehaviour do
+  @callback fetch() :: {:ok, %{} } | :not_found | {:error, reason :: term}
+end
+
 defmodule TodoGateway.FindGataway do
-  @behaviour TodoPort.FindPort
+  @behaviour TodoGateway.FindGatewayBehaviour
 
   def fetch() do
-    IO.puts("********")
-    {:ok, [%{id: 1, body: "todo1"}]}
+    TodoDriver.FindDriver.fetch()
   end
 end
