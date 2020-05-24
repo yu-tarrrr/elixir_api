@@ -3,7 +3,7 @@ defmodule TodoRest.TodoController do
   
 
   def readAll(conn, _params) do
-    result = TodoUsecase.FindUsecaseBehaviour.fetchTodos()
+    result = TodoUsecase.FindUsecase.fetchTodos()
     conn
       |> put_status(200)
       |> json(%{todos: result})

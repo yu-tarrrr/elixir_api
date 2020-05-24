@@ -5,11 +5,12 @@ defmodule TodoUsecase.FindUsecaseBehaviour do
 end
 
 defmodule TodoUsecase.FindUsecase do
+  # @find_port Application.get_env(:application, :find_port)
   @behaviour TodoUsecase.FindUsecaseBehaviour
 
   @impl true
   def fetchTodos do
-    case TodoPort.FindPort.fetch() do
+    case TodoGateway.FindGataway.fetch() do
       {:ok, result} -> result
       _ -> nil
     end
