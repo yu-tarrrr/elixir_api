@@ -1,18 +1,7 @@
 defmodule TodoGateway do
-  @moduledoc """
-  Documentation for `TodoGateway`.
-  """
+  @behaviour TodoPort.FindPort
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> TodoGateway.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def fetch() do
+    IO.puts("********")
   end
 end

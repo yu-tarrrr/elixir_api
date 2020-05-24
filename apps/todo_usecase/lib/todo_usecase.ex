@@ -9,7 +9,7 @@ defmodule TodoUsecase.FindUsecase do
 
   @impl true
   def fetchTodos do
-    case TodoPort.fetch() do
+    case TodoPort.FindPort.fetch() do
       {:ok, result} -> result
       _ -> nil
     end

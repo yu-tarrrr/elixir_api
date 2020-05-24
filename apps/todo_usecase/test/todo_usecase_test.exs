@@ -6,7 +6,7 @@ defmodule TodoUsecaseTest do
 
   test "find all usecase" do
     result = %{id: 1, body: "todo1"}
-    TodoPortMock
+    TodoPort.FindPortMock
     |> expect(:fetch, fn -> result end)
 
     assert TodoUsecase.FindUsecase.fetchTodos() == result
