@@ -10,12 +10,8 @@ defmodule TodoRest.Application do
     children = [
       # Start the endpoint when the application starts
       TodoRest.Endpoint
-      # Starts a worker by calling: TodoRest.Worker.start_link(arg)
-      # {TodoRest.Worker, arg},
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: TodoRest.Supervisor]
     Supervisor.start_link(children, opts)
   end

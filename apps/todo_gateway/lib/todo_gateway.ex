@@ -6,6 +6,6 @@ defmodule TodoGateway.FindGataway do
   @behaviour TodoGateway.FindGatewayBehaviour
 
   def fetch() do
-    TodoDriver.FindDriver.fetch()
+    {:ok, TodoDriver.FindDriver.fetch() } 
   end
 end

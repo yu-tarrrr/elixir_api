@@ -13,11 +13,11 @@ defmodule TodoUsecaseTest do
     assert TodoUsecase.FindUsecase.fetchTodos() == %{id: 1, body: "todo1"}
   end
 
-  test "no match case" do
-    TodoGateway.FindGatewayMock
-    |> expect(:fetch, fn -> :not_found end)
+  # test "no match case" do
+  #   TodoGateway.FindGatewayMock
+  #   |> expect(:fetch, fn -> :not_found end)
 
-    assert TodoGateway.FindGatewayMock.fetch() == :not_found
-    assert TodoUsecase.FindUsecase.fetchTodos() == nil
-  end
+  #   assert TodoGateway.FindGatewayMock.fetch() == :not_found
+  #   assert TodoUsecase.FindUsecase.fetchTodos() == nil
+  # end
 end  

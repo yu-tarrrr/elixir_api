@@ -7,6 +7,12 @@
 # General application configuration
 use Mix.Config
 
+config :todo_driver, Todo.Repo,
+  database: "todo_driver_repo",
+  username: "postgres",
+  password: "secret",
+  hostname: "localhost"
+
 # Configures the endpoint
 config :todo_rest, TodoRest.Endpoint,
   url: [host: "localhost"],
