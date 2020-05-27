@@ -13,6 +13,14 @@ config :todo_rest, TodoRest.Endpoint,
   check_origin: false,
   watchers: []
 
+
+config :todo_driver, 
+  namespace: TodoDriver,
+  database: "todos",
+  username: "postgres",
+  password: "secret",
+  hostname: "localhost",
+  ecto_repos: [TodoDriver.Repo]
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
