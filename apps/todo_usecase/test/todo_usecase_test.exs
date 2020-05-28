@@ -1,23 +1,15 @@
 defmodule TodoUsecaseTest do
   use ExUnit.Case
   import Mox
-
-  setup :verify_on_exit!
+  alias TodoUsecase.FindUsecase
+  alias TodoGateway.FindGataway
 
   test "find all usecase" do
-    result = {:ok, %{id: 1, body: "todo1"}}
+    result = [%{body: "mytodo1", id: 1}, %{body: "mytodo", id: 2}]
     TodoGateway.FindGatewayMock
     |> expect(:fetch, fn -> result end)
 
-    assert TodoGateway.FindGatewayMock.fetch() == result
-    assert TodoUsecase.FindUsecase.fetchTodos() == %{id: 1, body: "todo1"}
+    # assert TodoGateway.FindGatewayMock.fetch() == result
+    assert FindUsecase.fetchTodos() == [%{body: "mytodo1", id: 1}, %{body: "mytodo", id: 2}]
   end
-
-  # test "no match case" do
-  #   TodoGateway.FindGatewayMock
-  #   |> expect(:fetch, fn -> :not_found end)
-
-  #   assert TodoGateway.FindGatewayMock.fetch() == :not_found
-  #   assert TodoUsecase.FindUsecase.fetchTodos() == nil
-  # end
 end  
