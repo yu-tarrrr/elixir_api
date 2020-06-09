@@ -12,7 +12,7 @@ defmodule TodoGatewayTest do
   end
 
   test "find all failure" do
-    result = {:error, reason}
+    result = {:error, "Internal Server Error"}
     TodoDriver.FindDriverMock
     |> expect(:fetch, fn -> result end)
 

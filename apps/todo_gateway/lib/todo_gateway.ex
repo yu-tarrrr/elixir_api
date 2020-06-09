@@ -17,7 +17,7 @@ defmodule TodoGateway.FindGataway do
           %TodoObject{id: result.id, body: result.body}
         end)}
       {:error, reason} -> 
-        {:error,reason}
+        {:error, reason}
     end
   end
 end
