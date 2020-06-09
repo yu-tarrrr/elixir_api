@@ -9,8 +9,8 @@ defmodule TodoDriver.FindDriver do
 
     @behaviour TodoDriver.FindDriverBehaviour
     def fetch() do
-        TodoDriver.Repo.all(Todos)
-        |> Enum.map( fn todo -> %{id: todo.id, body: todo.body} end)
+        {:ok, TodoDriver.Repo.all(Todos)
+        |> Enum.map( fn todo -> %{id: todo.id, body: todo.body} end)}
     catch
         e ->
         Logger.error(inspect(e))

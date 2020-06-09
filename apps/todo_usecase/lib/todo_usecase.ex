@@ -1,6 +1,7 @@
 defmodule TodoUsecase.FindUsecaseBehaviour do
+  alias TodoDomain.TodoObjects
   @callback fetchTodos() ::
-    {:ok, %{} }| :not_found | {:error, reason :: term}
+    {:ok, TodoObjects.t }| :not_found | {:error, reason :: term}
   
 end
 
@@ -11,8 +12,10 @@ defmodule TodoUsecase.FindUsecase do
   @impl true
   def fetchTodos do
     case TodoGateway.FindGataway.fetch() do
-      {:ok, result} -> result
-      _ -> nil
+      {:ok, result} -> 
+        {:ok, result}
+      {:error, reason} -> 
+        {:error, reason}
     end
   end
 end

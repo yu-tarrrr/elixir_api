@@ -1,18 +1,10 @@
-defmodule TodoDomain do
-  @moduledoc """
-  Documentation for `TodoDomain`.
-  """
+defmodule TodoDomain.TodoObject do
+  defstruct [:id, :body]
+  @type t :: %__MODULE__{}
+end
 
-  @doc """
-  Hello world.
 
-  ## Examples
-
-      iex> TodoDomain.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
+defmodule TodoObject.TodoObjects do
+  alias TodoDomain.TodoObject
+  @type t:: [TodoObject.t()]
 end

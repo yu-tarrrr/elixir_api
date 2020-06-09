@@ -29,7 +29,8 @@ defmodule TodoGateway.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       {:todo_port, in_umbrella: true},
       {:todo_driver, in_umbrella: true},
-      {:mox, "~> 0.5", only: :test}
+      {:mox, "~> 0.5", only: :test},
+      {:todo_domain, in_umbrella: true}
     ]
   end
 end
