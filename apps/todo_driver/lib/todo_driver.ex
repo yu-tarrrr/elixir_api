@@ -1,6 +1,7 @@
 defmodule TodoDriver.FindDriverBehaviour do
     alias TodoDriver.Todos
-    @callback fetch() :: {:ok, Todos.t() } | :not_found | {:error, reason :: term}
+    @callback fetchAll() :: {:ok, Todos.t() } | :not_found | {:error, reason :: term}
+    @callback fetchBy(integer()) :: {:ok, Todos.t() } | :not_found | {:error, reason :: term}
 end
 
 defmodule TodoDriver.FindDriver do
@@ -8,7 +9,7 @@ defmodule TodoDriver.FindDriver do
     require Logger
 
     @behaviour TodoDriver.FindDriverBehaviour
-    def fetch() do
+    def fetchAll() do
         {:ok, TodoDriver.Repo.all(Todos)
         |> Enum.map( fn todo -> %{id: todo.id, body: todo.body} end)}
     catch
@@ -16,4 +17,14 @@ defmodule TodoDriver.FindDriver do
         Logger.error(inspect(e))
         {:error, e}
     end
+
+    def fetchBy(id) do
+        {:ok, TodoDriver.Repo.get_by(Todos, id: id)}
+    catch
+        e ->
+        Logger.error(inspect(e))
+        {:error, e}
+    end
+    
+    
 end

@@ -5,18 +5,26 @@ defmodule TodoGatewayTest do
   test "find all success" do
     result = {:ok, %{id: 1, body: "todo1"}}
     TodoDriver.FindDriverMock
-    |> expect(:fetch, fn -> result end)
+    |> expect(:fetchAll, fn -> result end)
 
-    assert TodoDriver.FindDriverMock.fetch() == result
-    TodoGateway.FindGataway.fetch() == %TodoDomain.TodoObject{id: 1, body: "todo1"}
+    TodoGateway.FindGataway.fetchAll() == %TodoDomain.TodoObject{id: 1, body: "todo1"}
   end
 
   test "find all failure" do
     result = {:error, "Internal Server Error"}
     TodoDriver.FindDriverMock
-    |> expect(:fetch, fn -> result end)
+    |> expect(:fetchAll, fn -> result end)
 
-    assert TodoDriver.FindDriverMock.fetch() == result
-    TodoGateway.FindGataway.fetch() == result
-  end 
+    assert TodoDriver.FindDriverMock.fetchAll() == result
+    TodoGateway.FindGataway.fetchAll() == result
+  end
+
+  test "find By id Success" do
+    id = 1
+    result = {:ok, %{id: 1, body: "todo1"}}
+    TodoDriver.FindDriverMock
+    |> expect(:fetchBy, fn id -> result end)
+
+    TodoGateway.FindGataway.fetchBy(id) == %TodoDomain.TodoObject{id: 1, body: "todo1"}
+  end
 end
