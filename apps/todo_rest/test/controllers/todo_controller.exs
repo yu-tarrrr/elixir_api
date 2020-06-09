@@ -4,7 +4,7 @@ defmodule TodoUsecase.FindUsecaseTest do
 
   setup :verify_on_exit!
 
-    test "call usecase" , %{conn: conn} do
+    test "find all success" , %{conn: conn} do
         result = %{id: 1, body; "todo1"}
 
         TodoUsecase.FindUsecaseMock
@@ -16,12 +16,17 @@ defmodule TodoUsecase.FindUsecaseTest do
         
         assert result == res
     end
-#   test "invokes add and mult" do
-#     MyApp.CalcMock
-#     |> expect(:add, fn x, y -> x + y end)
-#     |> expect(:mult, fn x, y -> x * y end)
 
-#     assert MyApp.CalcMock.add(2, 3) == 5
-#     assert MyApp.CalcMock.mult(2, 3) == 6
-#   end
+    test "find by id success", %{conn: conn} do
+        result = %{id: 1, body; "todo1"}
+
+        TodoUsecase.FindUsecaseMock
+        |> expect(:fetchTodos, fn -> result end)
+        
+        res = conn
+        |> get("/v1/todo/1")
+        |> response(200)
+        
+        assert result == res
+    end
 end

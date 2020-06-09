@@ -9,6 +9,7 @@ defmodule TodoRest.Router do
     pipe_through :api
     get "/systems/ping", SystemController, :ping
     get "/todos", TodoController, :readAll
+    get "/todo/:id", TodoController, :readBy
   end
 
 end

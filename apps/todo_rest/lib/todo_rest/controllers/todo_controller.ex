@@ -1,9 +1,8 @@
 defmodule TodoRest.TodoController do
   use TodoRest, :controller
+  alias TodoUsecase.FindUsecase
   
-
   def readAll(conn, _params) do
-    alias TodoUsecase.FindUsecase
     case FindUsecase.fetchTodos() do
       {:ok, results} ->
         value = results
@@ -17,4 +16,11 @@ defmodule TodoRest.TodoController do
         |> json(nil)
     end
   end
+
+  def readBy(conn, _params) do
+    conn
+    |> put_status(200)
+    |> json(_params)
+
+  end  
 end
