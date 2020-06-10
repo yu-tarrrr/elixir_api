@@ -24,7 +24,10 @@ defmodule TodoGateway.FindGataway do
   def fetchBy(id) do
     case FindDriver.fetchBy(id) do
       {:ok, result} ->
-        {:ok, %TodoObject{id: result.id, body: result.body}}
+        case result do
+          nil -> {:not_found}
+          _ -> {:ok, %TodoObject{id: result.id, body: result.body}}
+        end
       {:error, reason} -> 
         {:error, reason}
     end

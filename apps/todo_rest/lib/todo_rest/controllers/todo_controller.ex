@@ -26,6 +26,10 @@ defmodule TodoRest.TodoController do
         conn
         |> put_status(200)
         |> json(%{todo: value})
+      :not_found -> 
+        conn
+        |> put_status(200)
+        |> json(%{todo: []})
       {:error, _} ->
         conn
         |> put_status(500)

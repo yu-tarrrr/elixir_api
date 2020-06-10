@@ -1,6 +1,8 @@
 defmodule TodoDomain.TodoObject do
   defstruct [:id, :body]
   @type t :: %__MODULE__{}
+
+  def isNil(id) do id == nil end
 end
 
 

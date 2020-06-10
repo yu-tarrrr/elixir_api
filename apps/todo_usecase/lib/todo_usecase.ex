@@ -28,6 +28,8 @@ defmodule TodoUsecase.FindUsecase do
         {:ok, result}
       {:error, reason} -> 
         {:error, reason}
+      {:not_found} -> 
+        :not_found
     end
   end
 end
