@@ -10,6 +10,7 @@ defmodule TodoRest.Router do
     get "/systems/ping", SystemController, :ping
     get "/todos", TodoController, :readAll
     get "/todo/:id", TodoController, :readBy
+    post "/todo", TodoController, :create
   end
 
 end

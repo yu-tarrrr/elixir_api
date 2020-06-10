@@ -1,7 +1,8 @@
-defmodule TodoUsecaseTest do
+defmodule TodoUsecase.FindUsecaseTest do
   use ExUnit.Case
   import Mox
   alias TodoUsecase.FindUsecase
+  alias TodoUsecase.CreateUsecase
   alias TodoDomain.TodoObject
 
   test "find all usecase" do

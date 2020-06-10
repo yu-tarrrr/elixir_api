@@ -18,7 +18,6 @@ defmodule TodoRest.TodoController do
   end
 
   def readBy(conn, %{"id" => id} =_params) do
-    
     case FindUsecase.fetchBy(id) do
       {:ok, result} ->
         value = %{id: result.id, body: result.body}
@@ -35,5 +34,19 @@ defmodule TodoRest.TodoController do
         |> put_status(500)
         |> json(nil)
     end
-  end  
+  end
+
+  def create(conn, _body_params) do
+    body = conn.body_params["body"]
+    case FindUsecase.create(body) do
+      {:ok} ->
+        conn
+        |> put_status(:created)
+        |> json(%{status: :created})
+      {:error, _} ->
+        conn
+        |> put_status(500)
+        |> json(nil)
+    end
+  end
 end

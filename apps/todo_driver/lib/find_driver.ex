@@ -25,6 +25,4 @@ defmodule TodoDriver.FindDriver do
         Logger.error(inspect(e))
         {:error, e}
     end
-    
-    
 end
