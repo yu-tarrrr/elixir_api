@@ -3,8 +3,14 @@ defmodule TodoGateway.CreateGatewayBehaviour do
 end
 
 defmodule TodoGateway.CreateGateway do
-    @behaviour TodoGateway.CreateGatewayBehaviour
-    def create(body) do
-        
+  @behaviour TodoGateway.CreateGatewayBehaviour
+  alias TodoDriver.CreateDriver
+  def create(body) do
+    case CreateDriver.create(body) do
+      {:ok, _} -> 
+        {:ok}
+      {:error, reason} -> 
+        {:error, reason}
     end
+  end
 end

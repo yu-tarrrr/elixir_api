@@ -1,6 +1,7 @@
 defmodule TodoRest.TodoController do
   use TodoRest, :controller
   alias TodoUsecase.FindUsecase
+  alias TodoUsecase.CreateUsecase
   
   def readAll(conn, _params) do
     case FindUsecase.fetchAll() do
@@ -38,7 +39,7 @@ defmodule TodoRest.TodoController do
 
   def create(conn, _body_params) do
     body = conn.body_params["body"]
-    case FindUsecase.create(body) do
+    case CreateUsecase.create(body) do
       {:ok} ->
         conn
         |> put_status(:created)

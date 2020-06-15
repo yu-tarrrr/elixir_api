@@ -1,4 +1,4 @@
-defmodule TodoGatewayTest do
+defmodule TodoGateway.FindGatewayTest do
   use ExUnit.Case
   import Mox
 

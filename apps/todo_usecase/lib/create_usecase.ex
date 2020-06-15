@@ -4,7 +4,7 @@ end
 
 defmodule TodoUsecase.CreateUsecase do
     @behaviour TodoUsecase.CreateUsecaseBehaviour
-    alias TodoGataway.CreateGateway
+    alias TodoGateway.CreateGateway
     def create(body) do
         case CreateGateway.create(body) do
             {:ok} ->
