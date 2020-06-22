@@ -4,8 +4,9 @@ end
 
 defmodule TodoUsecase.DeleteUsecase do
     @behaviour TodoUsecase.DeleteUsecaseBehaviour
+    alias TodoGateway.DeleteGateway
 
     def deleteBy(id) do
-        {:ok, id}
+        DeleteGateway.deleteBy(id)
     end
 end

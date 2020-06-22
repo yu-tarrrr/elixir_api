@@ -5,8 +5,8 @@ defmodule TodoUsecase.DeleteUsecaseTest do
 
   test "delete success" do
       TodoGateway.DeleteGatewayMock
-      |> expect(:deleteBy, fn id -> nil end)
+      |> expect(:deleteBy, fn id -> {:ok, nil} end)
 
-       assert DeleteUsecase.deleteBy(1) == {:ok, nil}
+      assert DeleteUsecase.deleteBy(1) == {:ok, nil}
   end
 end
