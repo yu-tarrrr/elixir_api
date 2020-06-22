@@ -11,6 +11,7 @@ defmodule TodoRest.Router do
     get "/todos", TodoController, :readAll
     get "/todo/:id", TodoController, :readBy
     post "/todo", TodoController, :create
+    delete "/todo/:id", TodoController, :deleteBy
   end
 
 end

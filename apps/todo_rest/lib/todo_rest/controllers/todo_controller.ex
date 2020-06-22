@@ -2,6 +2,7 @@ defmodule TodoRest.TodoController do
   use TodoRest, :controller
   alias TodoUsecase.FindUsecase
   alias TodoUsecase.CreateUsecase
+  alias TodoUsecase.DeleteUsecase
   
   def readAll(conn, _params) do
     case FindUsecase.fetchAll() do
@@ -44,6 +45,20 @@ defmodule TodoRest.TodoController do
         conn
         |> put_status(:created)
         |> json(%{status: :created})
+      {:error, _} ->
+        conn
+        |> put_status(500)
+        |> json(nil)
+    end
+  end
+
+  def deleteBy(conn, %{"id" => id} =_params) do
+    case DeleteUsecase.deleteBy(id) do
+      {:ok, _} ->
+        conn
+        |> put_status(200)
+        |> json("Deleted Successfully")
+      
       {:error, _} ->
         conn
         |> put_status(500)
